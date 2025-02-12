@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Метеостанция школы лицей имени А.Ермекова</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            display: grid;
+            place-items: center;
+        }
+        nav {
+            display: grid;
+            place-items: center;
+        }
+        .container {
+            display: grid;
+            gap: 10px;
+            padding: 5px;
+            margin: 5px;
+            background-color: #FFFFFF;
+            width: 350px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+            align-items: center;
+            font-size: 30px;
+            opacity: 0.7;
+        }
+        .container_2 {
+            display: flex;
+            align-items: center;
+        }
+        .city {
+            background-color: #FFFFFF;
+            text-align: center;
+            border-radius: 20px;
+            width: 400px;
+            height: 80px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            margin: 5px;
+            opacity: 0.7;
+        }
+        .temperature, .humidity, .wind_speed, .weather {
+            background-color: #FFFFFF;
+            text-align: center;
+            border-radius: 20px;
+            width: 400px;
+            height: 80px;
+            font-size: 50px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            margin: 40px;
+            opacity: 0.7;
+        }
+        .chart {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            width: 1000px;
+            height: 600px;
+            margin: 10px;
+            opacity: 0.7;
+            text-align: center;
+            font-size: 25px;
+            padding: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.5.0/build/global/luxon.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="city"><h1>Погода в Балхаше</h1></div>
+    </header>
+    <nav>
+        <div class="container">
+            <div class="clock" id="time"></div>
+            <div class="calendar" id="calendar"></div>
+        </div>
+    </nav>
+    <div class="container_2">
+        <main>
+            <div class="temperature">температура: </div>
+            <div class="humidity">влажность: </div>
+            <div class="wind_speed">скр. ветра: </div>
+            <div class="weather">погода: </div>
+        </main>
+        <aside>
+            <div class="chart">
+            <h2>Понедельник: -8</h2>
+            <h2>Вторник: -7</h2>
+            <h2>Среда: -6</h2>
+            <h2>Четверг: -2</h2>
+            <h2>Пятница: -4</h2>
+            <h2>Суббота: -4</h2>
+            <h2>Воскресенье: -1</h2>
+            </div>
+        </aside>
+    </div>
+    <footer></footer>
+
+    <script>
+        const { DateTime } = luxon;
+
+        function updateTime() {
+            const balhashTime = DateTime.now().setZone('Asia/Almaty');
+
+            const hours = balhashTime.toFormat('HH');
+            const minutes = balhashTime.toFormat('mm');
+            const seconds = balhashTime.toFormat('ss');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').textContent = `Время: ${timeString}`;
+
+            setBackgroundImage(parseInt(hours));
+        }
+
+        function updateCalendar() {
+            const now = new Date();
+            const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+            const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+            const dayOfWeek = daysOfWeek[now.getDay()];
+
+            const calendarString = `${dayOfWeek}, ${day} ${month} ${year}`;
+            document.getElementById('calendar').textContent = calendarString;
+        }
+
+        function setBackgroundImage(hours) {
+            let imageUrl;
+            if (hours >= 6 && hours < 12) {
+                imageUrl = 'img/morning.jpg';
+            } else if (hours >= 12 && hours < 18) {
+                imageUrl = 'img/afternoon.jpg';
+            } else if (hours >= 18 && hours < 22) {
+                imageUrl = 'img/evening.jpg';
+            } else {
+                imageUrl = 'img/night.jpg';
+            }
+
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateCalendar();
+    </script>
+</body>
+</html>
