@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Метеостанция школы лицей имени А.Ермекова</title>
+    <meta charset="UTF-8">
+    <title>ГЊГҐГІГҐГ®Г±ГІГ Г­Г¶ГЁГї ГёГЄГ®Г«Г» Г«ГЁГ¶ГҐГ© ГЁГ¬ГҐГ­ГЁ ГЂ.Г…Г°Г¬ГҐГЄГ®ГўГ </title>
     <style>
         body {
             background-color: #000000;
@@ -74,7 +75,7 @@
 </head>
 <body>
     <header>
-        <div class="city"><h1>Погода в Балхаше</h1></div>
+        <div class="city"><h1>ГЏГ®ГЈГ®Г¤Г  Гў ГЃГ Г«ГµГ ГёГҐ</h1></div>
     </header>
     <nav>
         <div class="container">
@@ -84,20 +85,20 @@
     </nav>
     <div class="container_2">
         <main>
-            <div class="temperature">температура: </div>
-            <div class="humidity">влажность: </div>
-            <div class="wind_speed">скр. ветра: </div>
-            <div class="weather">погода: </div>
+            <div class="temperature">ГІГҐГ¬ГЇГҐГ°Г ГІГіГ°Г : </div>
+            <div class="humidity">ГўГ«Г Г¦Г­Г®Г±ГІГј: </div>
+            <div class="wind_speed">Г±ГЄГ°. ГўГҐГІГ°Г : </div>
+            <div class="weather">ГЇГ®ГЈГ®Г¤Г : </div>
         </main>
         <aside>
             <div class="chart">
-            <h2>Понедельник: -8</h2>
-            <h2>Вторник: -7</h2>
-            <h2>Среда: -6</h2>
-            <h2>Четверг: -2</h2>
-            <h2>Пятница: -4</h2>
-            <h2>Суббота: -4</h2>
-            <h2>Воскресенье: -1</h2>
+            <h2>ГЏГ®Г­ГҐГ¤ГҐГ«ГјГ­ГЁГЄ: -8</h2>
+            <h2>Г‚ГІГ®Г°Г­ГЁГЄ: -7</h2>
+            <h2>Г‘Г°ГҐГ¤Г : -6</h2>
+            <h2>Г—ГҐГІГўГҐГ°ГЈ: -2</h2>
+            <h2>ГЏГїГІГ­ГЁГ¶Г : -4</h2>
+            <h2>Г‘ГіГЎГЎГ®ГІГ : -4</h2>
+            <h2>Г‚Г®Г±ГЄГ°ГҐГ±ГҐГ­ГјГҐ: -1</h2>
             </div>
         </aside>
     </div>
@@ -113,15 +114,15 @@
             const minutes = balhashTime.toFormat('mm');
             const seconds = balhashTime.toFormat('ss');
             const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('time').textContent = `Время: ${timeString}`;
+            document.getElementById('time').textContent = `Г‚Г°ГҐГ¬Гї: ${timeString}`;
 
             setBackgroundImage(parseInt(hours));
         }
 
         function updateCalendar() {
             const now = new Date();
-            const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-            const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+            const months = ["ГџГ­ГўГ Г°Гј", "Г”ГҐГўГ°Г Г«Гј", "ГЊГ Г°ГІ", "ГЂГЇГ°ГҐГ«Гј", "ГЊГ Г©", "Г€ГѕГ­Гј", "Г€ГѕГ«Гј", "ГЂГўГЈГіГ±ГІ", "Г‘ГҐГ­ГІГїГЎГ°Гј", "ГЋГЄГІГїГЎГ°Гј", "ГЌГ®ГїГЎГ°Гј", "Г„ГҐГЄГ ГЎГ°Гј"];
+            const daysOfWeek = ["Г‚Г®Г±ГЄГ°ГҐГ±ГҐГ­ГјГҐ", "ГЏГ®Г­ГҐГ¤ГҐГ«ГјГ­ГЁГЄ", "Г‚ГІГ®Г°Г­ГЁГЄ", "Г‘Г°ГҐГ¤Г ", "Г—ГҐГІГўГҐГ°ГЈ", "ГЏГїГІГ­ГЁГ¶Г ", "Г‘ГіГЎГЎГ®ГІГ "];
 
             const day = now.getDate();
             const month = months[now.getMonth()];
